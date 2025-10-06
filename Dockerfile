@@ -1,4 +1,4 @@
-FROM ubuntu:latest AS buil
+FROM ubuntu:latest AS build
 
 RUN apt-get install maven -y
 RUN mvn clean install
