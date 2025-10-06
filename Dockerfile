@@ -1,5 +1,5 @@
 FROM ubuntu:latest AS build
-
+COPY . .
 RUN apt-get install maven -y
 RUN mvn clean install
 
