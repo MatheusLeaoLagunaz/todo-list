@@ -17,7 +17,7 @@ public class UserController {
     @Autowired
     private IUserRepository userRepository;
 
-    @PostMapping("/criar")
+    @PostMapping("/register")
     public ResponseEntity create(@RequestBody UserModel userModel){
         var user = this.userRepository.findByUsername(userModel.getUsername());
         if (user != null){
