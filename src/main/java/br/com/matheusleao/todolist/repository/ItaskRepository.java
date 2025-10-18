@@ -1,5 +1,6 @@
-package br.com.matheusleao.todolist.task;
+package br.com.matheusleao.todolist.repository;
 
+import br.com.matheusleao.todolist.model.TaskModel;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

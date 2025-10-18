@@ -35,7 +35,7 @@ A API está hospedada e disponível para testes no Render:
 
 - ✅ Cadastro e autenticação de usuários
 - 🔒 Criptografia de senhas com **BCrypt**
-- 🗂️ CRUD completo de tarefas: criar, listar, atualizar e deletar
+- 🗂️ Metodos: criar, listar, atualizar
 - 💾 Persistência com **H2 Database**
 - 🧱 Organização inicial seguindo a estrutura MVC
 - 🧪 Testes de endpoints com **API Dog**

@@ -1,7 +1,8 @@
-package br.com.matheusleao.todolist.user;
+package br.com.matheusleao.todolist.controller;
 
 import at.favre.lib.crypto.bcrypt.BCrypt;
-import org.apache.catalina.User;
+import br.com.matheusleao.todolist.repository.IUserRepository;
+import br.com.matheusleao.todolist.model.UserModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
