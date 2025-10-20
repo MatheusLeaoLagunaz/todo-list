@@ -29,12 +29,31 @@ public class TaskController {
         return ResponseEntity.status(HttpStatus.OK).body(task);
     }
 
-//    @GetMapping("/listar")
-//    public List<TaskModel> list() {
-////        var idUser = request.getAttribute("idUser");
-////        var tasks = this.taskRepository.findByIdUser((UUID)idUser);
-//        return taskService.listar();
-//    }
+
+    @GetMapping("/listar")
+    public ResponseEntity<List<TaskModel>> list() {
+        List<TaskModel> lista = taskService.listar();
+        return ResponseEntity.status(HttpStatus.OK).body(lista);
+    }
+
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<Void> delete(@PathVariable UUID id) {
+        taskService.excluir(id);
+        return ResponseEntity.status(HttpStatus.OK).build();
+    }
+
+
+    @PutMapping("atualizar/{id}")
+    public ResponseEntity<TaskModel> atualizar(@PathVariable UUID id, @RequestBody TaskModel taskAtualizada) {
+
+        TaskModel task = taskService.atualizar(id, taskAtualizada);
+
+        if (task == null) {
+            return ResponseEntity.notFound().build();
+        }
+
+        return ResponseEntity.ok(task);
+    }
 
 //    @PutMapping("/{id}")
 //    public TaskModel update(@RequestBody TaskModel taskModel,@PathVariable UUID id) {

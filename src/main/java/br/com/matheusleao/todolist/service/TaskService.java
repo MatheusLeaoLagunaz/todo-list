@@ -34,7 +34,30 @@ public class TaskService {
         return taskRepository.findAll();
     }
 
+    public void excluir(UUID id) {
+        taskRepository.deleteById(id);
+    }
 
+    public TaskModel buscarPorId(UUID id) {
+        return taskRepository.findById(id).orElse(null); // retorna null se não existir
+    }
+
+    // UPDATE
+    public TaskModel atualizar(UUID id, TaskModel taskAtualizada) {
+        TaskModel taskExistente = taskRepository.findById(id).orElse(null);
+
+        if (taskExistente == null) {
+            return null;
+        }
+
+        if (taskAtualizada.getTitle() != null)
+            taskExistente.setTitle(taskAtualizada.getTitle());
+
+        if (taskAtualizada.getDescription() != null)
+            taskExistente.setDescription(taskAtualizada.getDescription());
+
+        return taskRepository.save(taskExistente);
+    }
 
 
 }
