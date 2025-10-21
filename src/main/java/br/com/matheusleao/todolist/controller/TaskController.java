@@ -3,6 +3,7 @@ package br.com.matheusleao.todolist.controller;
 import br.com.matheusleao.todolist.repository.ItaskRepository;
 import br.com.matheusleao.todolist.model.TaskModel;
 import br.com.matheusleao.todolist.service.TaskService;
+import io.swagger.v3.oas.annotations.Operation;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -24,6 +25,7 @@ public class TaskController {
     }
 
     @PostMapping("")
+    @Operation(summary = "Create Task")
     public ResponseEntity<TaskModel> creat(@RequestBody TaskModel taskModel) {
         var task = taskService.creat(taskModel);
         return ResponseEntity.status(HttpStatus.OK).body(task);
@@ -31,12 +33,14 @@ public class TaskController {
 
 
     @GetMapping("/listar")
+    @Operation(summary = "List All")
     public ResponseEntity<List<TaskModel>> list() {
         List<TaskModel> lista = taskService.listar();
         return ResponseEntity.status(HttpStatus.OK).body(lista);
     }
 
     @DeleteMapping("/delete/{id}")
+    @Operation(summary = "Delete Task")
     public ResponseEntity<Void> delete(@PathVariable UUID id) {
         taskService.excluir(id);
         return ResponseEntity.status(HttpStatus.OK).build();
@@ -44,6 +48,7 @@ public class TaskController {
 
 
     @PutMapping("atualizar/{id}")
+    @Operation(summary = "Update Task")
     public ResponseEntity<TaskModel> atualizar(@PathVariable UUID id, @RequestBody TaskModel taskAtualizada) {
 
         TaskModel task = taskService.atualizar(id, taskAtualizada);
